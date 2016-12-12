@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <link rel="stylesheet" href="/assets/css/app-style.css">
+    <link rel="icon" href="/assets/img/favicon.ico" type="image/gif">
 </head>
 <body>
-
+    <div class="appizy-container">
+        {{ content }}
+    </div>
+    <footer>
+        Created and hosted with <a href="http://www.appizy.com">Appizy</a>
+    </footer>
 </body>
 </html>
