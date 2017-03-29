@@ -1,0 +1,9 @@
+<div>
+    {% assign applicationPages = site.pages | where:"layout","app"%}
+    {% for applicationPage in applicationPages %}
+    <p>
+        <a href="{{ applicationPage.url | relative_url }}">{{ applicationPage.title | escape }}</a> by {{
+        applicationPage.author }}
+    </p>
+    {% endfor %}
+</div>

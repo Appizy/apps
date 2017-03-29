@@ -1,0 +1,3 @@
+## Applications
+
+{% include applications.html %}

@@ -1,0 +1,395 @@
+---
+title: BMI Calculator
+layout: app
+lang: en
+author: Appizy
+---
+<style type="text/css">
+    /* Normalize */
+
+    /* Appizy default CSS */
+    #appizy {
+        display: inline-block;
+    }
+
+    #appizy table {
+        table-layout: fixed;
+        border: none;
+        border-collapse: collapse;
+    }
+
+    #appizy tbody {
+        border: none;
+    }
+
+    #appizy tr {
+        font-size: 10pt;
+        font-family: Arial;
+        min-height: 10px;
+    }
+
+    #appizy td {
+        padding: 2px;
+        line-height: normal;
+    }
+
+    #appizy input {
+        background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+        border: 1px solid #C2C2C2;
+        border-radius: 2px;
+        color: inherit;
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        padding-right: 1%;
+        margin: 1%;
+        text-align: inherit;
+        vertical-align: text-bottom;
+        width: 97%;
+    }
+
+    #appizy input:disabled {
+        border: none !important;
+        color: inherit;
+        -webkit-opacity: 1;
+        -webkit-text-fill-color: inherit;
+    }
+
+    #appizy select {
+        width: 100%;
+        text-align: inherit;
+    }
+
+    #appizy p {
+        margin: 0;
+    }
+
+    .in {
+        text-align: right;
+    }
+
+    .out {
+        text-align: right;
+        padding: 5px;
+    }
+
+    .hidden-cell {
+        display: none;
+    }
+
+    .hidden-row {
+        display: none;
+    }
+
+    .co1 {
+        width: 0.9898in;
+    }
+
+    .co2 {
+        width: 0.889in;
+    }
+
+    .ro1 {
+        height: 0.2484in;
+    }
+
+    .ce1 {
+        text-align: center;
+        font-size: 12pt;
+        font-weight: bold;
+    }
+
+    .ce2 {
+        font-weight: bold;
+    }
+
+    .ce3 {
+        background-color: transparent;
+    }
+
+    .ce4 {
+        background-color: #99cccc;
+    }
+
+    .tabs-list {
+        height: 30px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .tabs-list li {
+        height: 30px;
+        line-height: 30px;
+        list-style: none;
+        float: left;
+        background-color: #ccc;
+        border-top: 1px solid #d4d4d1;
+        border-right: 1px solid #d4d4d1;
+        border-left: 1px solid #d4d4d1;
+        margin-right: 5px;
+    }
+
+    .tabs-list li.active {
+        position: relative;
+        background-color: #fff;
+        border-bottom: 1px solid #fff;
+        z-index: 5;
+    }
+
+    .tabs-list li a {
+        padding: 10px;
+        color: #595959;
+        text-decoration: none;
+    }
+
+    .tabs-list .active a {
+        color: #000;
+    }
+
+    .tabs {
+        border: 1px solid #d4d4d1;
+        background-color: #fff;
+        margin-bottom: 20px;
+    }
+
+    .tab-content {
+        padding: 10px;
+        display: none;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+</style>
+
+<div id="appizy">
+    <form>
+        <div class="tabs">
+            <div id="sheet1" class="tab-content active">
+                <table>
+                    <tbody>
+                    <tr class="s0r0 ro1">
+                        <td class="s0r0c0 text ce1" colspan="3">
+                            <p>
+                                BMI Calculator
+                            </p>
+                        </td>
+                    </tr>
+                    <tr class="s0r1 ro1">
+                        <td class="s0r1c0 text ce2">
+                            <p>
+                                Height
+                            </p>
+                        </td>
+                        <td class="s0r1c1 in ce3">
+                            <input id="s0r1c1" name="s0r1c1" data-value-type="float" value="180">
+                        </td>
+                        <td class="s0r1c2 text Default">
+                            <p>
+                                cm
+                            </p>
+                        </td>
+                    </tr>
+                    <tr class="s0r2 ro1">
+                        <td class="s0r2c0 text ce2">
+                            <p>
+                                Weight
+                            </p>
+                        </td>
+                        <td class="s0r2c1 in ce3">
+                            <input id="s0r2c1" name="s0r2c1" data-value-type="float" value="70">
+                        </td>
+                        <td class="s0r2c2 text Default">
+                            <p>
+                                kg
+                            </p>
+                        </td>
+                    </tr>
+                    <tr class="s0r3 ro1">
+                        <td class="s0r3c0 text ce2">
+                            <p>
+                                Your BMI:
+                            </p>
+                        </td>
+                        <td class="s0r3c1 out ce4">
+                            <input disabled="disabled" name="s0r3c1" value="21.6" data-value-type="number"
+                                   data-format="0.0">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript">
+</script><!-- Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js" type="text/javascript">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.5.3/numeral.min.js" type="text/javascript">
+</script>
+<script src="https://cdn.jsdelivr.net/jstat/1.5.3/jstat.min.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+    jStat.jStat = jStat;
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/formulajs/1.0.8/formula.js" type="text/javascript">
+</script><!-- Spreadsheet calculations -->
+<script type="application/javascript">
+
+    (function ($, Formula) {
+        window.APY = window.APY || {};
+        APY.formulas = {};
+        APY.formulas.s0r3c1 = function () {
+            APY.set('s0r3c1', RANGE([0, 2, 1]) / Formula.POWER(RANGE([0, 1, 1]) / 100, 2))
+        }
+        function step0() {
+            APY.formulas.s0r3c1();
+        }
+
+        function run_calc() {
+            step0()
+        }
+
+        window.onload = function () {
+            $('input, select').on('change', function () {
+                $(this).setFormattedValue();
+                run_calc();
+            });
+
+            $('input:enabled').each(function () {
+                $(this).setFormattedValue();
+            });
+            run_calc();
+        };
+
+        $.fn.setFormattedValue = function () {
+            var value = $(this).val();
+            var valueType = $(this).attr('data-value-type');
+            var valueFormat = $(this).attr('data-format');
+
+            var formattedValue = APY.formatValue(value, valueType, valueFormat);
+            this.val(formattedValue);
+        };
+
+        APY.getInput = function (value, type) {
+            if (typeof type === 'undefined') type = 'string';
+
+            if (type == 'boolean') {
+                value = (value == 'true');
+            } else if (value.length === 0) {
+                value = '';
+            } else if (type == 'string') {
+
+                if (!isNaN(value) && isFinite(value)) {
+                    value = parseFloat(value);
+                } else {
+
+                }
+
+            } else {
+                old_format = value;
+                value = numeral().unformat(value);
+            }
+            return value;
+        };
+
+        APY.set = function (output_name, value, type) {
+            if (window.APY.cells && window.APY.cells.hasOwnProperty(output_name)) {
+                window.APY.cells[output_name] = value;
+            } else {
+                // Set default type if necessary
+                if (typeof type === "undefined") {
+                    type = (typeof value === "undefined") ? "string" : typeof value;
+                }
+
+                var element = $('[name=' + output_name + ']');
+                var formats = $(element).data('format');
+
+                element.attr('data-value-type', type);
+
+                // Format allowed for number, float and percentage
+                if ((type == 'number' || type == 'float' || type == 'percentage' || type == 'currency') &&
+                    (typeof formats != "undefined")) {
+
+                    var formats_array = formats.toString().split(";", 3);
+                    var nb_format = formats_array.length;
+                    if (value == 0 && nb_format == 3) {
+                        myformat = formats_array[1];
+                    } else if (value < 0) {
+                        myformat = formats_array[0];
+                    } else {
+                        myformat = formats_array[nb_format - 1];
+                    }
+
+                    element.val(numeral(value).format(myformat));
+
+                } else {
+                    element.val(value);
+                }
+            }
+        };
+
+        APY.formatValue = function (value, type, formats) {
+            var formattedValue = value;
+
+            if ((type == 'number' || type == 'float' || type == 'percentage' || type == 'currency') &&
+                (typeof formats != "undefined")) {
+
+                var formats_array = formats.toString().split(";", 3);
+                var nb_format = formats_array.length;
+                if (value == 0 && nb_format == 3) {
+                    myformat = formats_array[1];
+                } else if (value < 0) {
+                    myformat = formats_array[0];
+                } else {
+                    myformat = formats_array[nb_format - 1];
+                }
+                formattedValue = numeral(value).format(myformat);
+            }
+
+            return formattedValue;
+        };
+
+        window.RANGE = function () {
+            var item, value;
+            if (arguments.length == 1) {
+                var cell_ref = 's' + arguments[0][0] + 'r' + arguments[0][1] + 'c' + arguments[0][2];
+
+                if (window.APY.cells && window.APY.cells.hasOwnProperty(cell_ref)) {
+                    value = window.APY.cells[cell_ref];
+                } else {
+                    item = $('[name=' + cell_ref + ']');
+                    value = item.length > 0 ? APY.getInput(item.val(), item.attr('data-value-type')) : null;
+                }
+
+                return value;
+
+            } else if (arguments.length == 2) {
+                var head = arguments[0];
+                var tail = arguments[1];
+                var values = [];
+
+                for (var i = 0; i <= (tail[1] - head[1]); i++) {
+                    var row = [];
+                    for (var j = 0; j <= tail[2] - head[2]; j++) {
+                        cell_ref = 's' + head[0] + 'r' + (head[1] + i) + 'c' + (head[2] + j);
+
+                        if (window.APY.cells && window.APY.cells.hasOwnProperty(cell_ref)) {
+                            value = window.APY.cells[cell_ref];
+                        } else {
+                            item = $('[name=' + cell_ref + ']');
+                            value = item.length > 0 ? APY.getInput(item.val(), item.attr('data-value-type')) : null;
+                        }
+                        row.push(value);
+                    }
+                    values.push(row);
+                }
+                return values;
+            }
+        };
+
+        APY.calculate = run_calc;
+
+    })(jQuery, formulajs);
+</script>
