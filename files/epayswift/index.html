@@ -1,0 +1,1101 @@
+---
+title: BMI Calculator
+layout: app
+lang: en
+author: Caesar Waganagwa
+---
+    <style type="text/css">
+        /* Normalize */
+
+        /* Appizy default CSS */
+        #appizy {
+            display: inline-block;
+        }
+
+        #appizy table {
+            table-layout: fixed;
+            border: none;
+            border-collapse: collapse;
+        }
+
+        #appizy tbody {
+            border: none;
+        }
+
+        #appizy tr {
+            font-size: 10pt;
+            font-family: Arial;
+            min-height: 10px;
+        }
+
+        #appizy td {
+            padding: 2px;
+            line-height: normal;
+        }
+
+        #appizy input {
+            background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+            border: 1px solid #C2C2C2;
+            border-radius: 2px;
+            color: inherit;
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+            padding-right: 1%;
+            margin: 1%;
+            text-align: inherit;
+            vertical-align: text-bottom;
+            width: 97%;
+        }
+
+        #appizy input:disabled {
+            border: none !important;
+            color: inherit;
+            -webkit-opacity: 1;
+            -webkit-text-fill-color: inherit;
+        }
+
+        #appizy select {
+            width: 100%;
+            text-align: inherit;
+        }
+
+        #appizy p {
+            margin: 0;
+        }
+
+        .in {
+            text-align: right;
+        }
+
+        .out {
+            text-align: right;
+            padding: 5px;
+        }
+
+        .hidden-cell {
+            display: none;
+        }
+
+        .hidden-row {
+            display: none;
+        }
+
+        .co1 {
+            width: 3.1701in;
+        }
+
+        .co2 {
+            width: 3.9134in;
+        }
+
+        .co3 {
+            width: 1.8898in;
+        }
+
+        .co4 {
+            width: 1.5311in;
+        }
+
+        .co5 {
+            width: 0.8925in;
+        }
+
+        .ro1 {
+            height: 0.2453in;
+        }
+
+        .ro2 {
+            height: 0.2709in;
+        }
+
+        .ce1 {
+            text-align: center;
+            color: #333333;
+            font-family: Calibri;
+            font-size: 14pt;
+            font-weight: normal;
+        }
+
+        .ce2 {
+            color: #333333;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .ce3 {
+            text-align: end;
+            color: #333333;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .ce4 {
+            border-bottom: 0.028in solid #000000;
+            border-left: none;
+            border-right: none;
+            border-top: none;
+            color: #333333;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .ce5 {
+            border-bottom: 0.028in solid #000000;
+            border-left: none;
+            border-right: none;
+            border-top: none;
+            text-align: center;
+            color: #333333;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .ce6 {
+            text-align: center;
+            color: #333333;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .ce7 {
+            color: #333333;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .ce8 {
+            text-align: center;
+            color: #333333;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .ce9 {
+            text-align: center;
+            color: #990000;
+            font-family: Calibri;
+            font-size: 15pt;
+            font-weight: normal;
+        }
+
+        .ce10 {
+            text-align: center;
+            color: #333333;
+            font-family: Calibri;
+            font-size: 15pt;
+            font-weight: normal;
+        }
+
+        .ce11 {
+            text-align: center;
+            color: #006633;
+            font-family: Calibri;
+            font-size: 15pt;
+            font-weight: normal;
+        }
+
+        .ce12 {
+            text-align: center;
+            color: #990000;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .ce13 {
+            border-bottom: 0.028in solid #000000;
+            border-left: none;
+            border-right: none;
+            border-top: none;
+            text-align: center;
+            color: #333333;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .ce14 {
+            background-color: #f4f5f1;
+            text-align: center;
+            color: #333333;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .ce15 {
+            background-color: #f4f5f1;
+            text-align: center;
+            color: #990000;
+            font-family: Calibri;
+            font-size: 15pt;
+            font-weight: normal;
+        }
+
+        .ce16 {
+            border-bottom: 0.028in solid #000000;
+            background-color: #f4f5f1;
+            border-left: none;
+            border-right: none;
+            border-top: none;
+            text-align: center;
+            color: #333333;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .ce17 {
+            background-color: #f4f5f1;
+            text-align: center;
+            color: #990000;
+            font-family: Calibri;
+            font-size: 15pt;
+            font-weight: normal;
+        }
+
+        .ce18 {
+            border-bottom: 0.028in solid #000000;
+            background-color: #f4f5f1;
+            border-left: none;
+            border-right: none;
+            border-top: none;
+            text-align: center;
+            color: #333333;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .ce19 {
+            background-color: #ddf2ff;
+            text-align: center;
+            color: #333333;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .ce20 {
+            background-color: #ddf2ff;
+            text-align: center;
+            color: #990000;
+            font-family: Calibri;
+            font-size: 15pt;
+            font-weight: normal;
+        }
+
+        .ce21 {
+            border-bottom: 0.028in solid #000000;
+            background-color: #ddf2ff;
+            border-left: none;
+            border-right: none;
+            border-top: none;
+            text-align: center;
+            color: #333333;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .ce22 {
+            background-color: #ddf2ff;
+            text-align: center;
+            color: #990000;
+            font-family: Calibri;
+            font-size: 15pt;
+            font-weight: normal;
+        }
+
+        .ce23 {
+            text-align: center;
+            color: #333333;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-style: italic;
+            font-weight: normal;
+        }
+
+        .ce24 {
+            background-color: #f4f5f1;
+            text-align: center;
+            color: #990000;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .ce25 {
+            background-color: #ddf2ff;
+            text-align: center;
+            color: #333333;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .ce26 {
+            background-color: #ddf2ff;
+            text-align: center;
+            color: #006633;
+            font-family: Calibri;
+            font-size: 15pt;
+            font-weight: normal;
+        }
+
+        .ce28 {
+            text-align: center;
+            color: #333333;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .ce29 {
+            text-align: center;
+            color: #333333;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .ce30 {
+            border-bottom: 0.028in solid #000000;
+            border-left: none;
+            border-right: none;
+            border-top: none;
+            text-align: center;
+            color: #333333;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .ce31 {
+            background-color: #f4f5f1;
+            text-align: center;
+            color: #333333;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .ce32 {
+            background-color: #f4f5f1;
+            text-align: center;
+            color: #007826;
+            font-family: Calibri;
+            font-size: 15pt;
+            font-weight: normal;
+        }
+
+        .ce33 {
+            border-bottom: 0.028in solid #000000;
+            background-color: #f4f5f1;
+            border-left: none;
+            border-right: none;
+            border-top: none;
+            text-align: center;
+            color: #333333;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .ce34 {
+            background-color: #f4f5f1;
+            text-align: center;
+            color: #333333;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .ce35 {
+            background-color: #f4f5f1;
+            text-align: center;
+            color: #006633;
+            font-family: Calibri;
+            font-size: 15pt;
+            font-weight: normal;
+        }
+
+        .ce36 {
+            border-bottom: 0.028in solid #000000;
+            background-color: #f4f5f1;
+            border-left: none;
+            border-right: none;
+            border-top: none;
+            text-align: center;
+            color: #333333;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .ce37 {
+            background-color: #ddf2ff;
+            text-align: center;
+            color: #333333;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .ce38 {
+            background-color: #ddf2ff;
+            text-align: center;
+            color: #333333;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .ce39 {
+            background-color: #ddf2ff;
+            text-align: center;
+            color: #006633;
+            font-family: Calibri;
+            font-size: 15pt;
+            font-weight: normal;
+        }
+
+        .ce40 {
+            border-bottom: 0.028in solid #000000;
+            background-color: #ddf2ff;
+            border-left: none;
+            border-right: none;
+            border-top: none;
+            text-align: center;
+            color: #333333;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .ce41 {
+            background-color: #ddf2ff;
+            text-align: center;
+            color: #006633;
+            font-family: Calibri;
+            font-size: 15pt;
+            font-weight: normal;
+        }
+
+        .ce42 {
+            border-bottom: 0.028in solid #000000;
+            background-color: #ddf2ff;
+            border-left: none;
+            border-right: none;
+            border-top: none;
+            text-align: center;
+            color: #333333;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .ce43 {
+            text-align: center;
+            color: #333333;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .ce44 {
+            text-align: center;
+            color: #333333;
+            font-family: Calibri;
+            font-size: 11pt;
+            font-weight: normal;
+        }
+
+        .tabs-list {
+            height: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .tabs-list li {
+            height: 30px;
+            line-height: 30px;
+            list-style: none;
+            float: left;
+            background-color: #ccc;
+            border-top: 1px solid #d4d4d1;
+            border-right: 1px solid #d4d4d1;
+            border-left: 1px solid #d4d4d1;
+            margin-right: 5px;
+        }
+
+        .tabs-list li.active {
+            position: relative;
+            background-color: #fff;
+            border-bottom: 1px solid #fff;
+            z-index: 5;
+        }
+
+        .tabs-list li a {
+            padding: 10px;
+            color: #595959;
+            text-decoration: none;
+        }
+
+        .tabs-list .active a {
+            color: #000;
+        }
+
+        .tabs {
+            border: 1px solid #d4d4d1;
+            background-color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .tab-content {
+            padding: 10px;
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="appizy">
+    <form>
+        <div class="tabs">
+            <div id="sheet1" class="tab-content active">
+                <table>
+                    <tr class="s0r2 ro2">
+                        <td class="s0r2c0 text ce3">
+                            <p>
+                                Current buying exchange rate
+                            </p>
+                        </td>
+                        <td class="s0r2c1 in ce9">
+                            <input id="s0r2c1" name="s0r2c1" data-value="97.1" data-value-type="float" value="97.1">
+                        </td>
+                        <td class="s0r2c2 text ce23"></td>
+                    </tr>
+                    <tr class="s0r3 ro2">
+                        <td class="s0r3c0 text ce3"></td>
+                        <td class="s0r3c1 text ce10"></td>
+                        <td class="s0r3c2 text ce23"></td>
+                    </tr>
+                    <tr class="s0r4 ro2">
+                        <td class="s0r4c0 text ce3">
+                            <p>
+                                Current selling exchange rate
+                            </p>
+                        </td>
+                        <td class="s0r4c1 in ce11">
+                            <input id="s0r4c1" name="s0r4c1" data-value="104" data-value-type="float" value="104">
+                        </td>
+                        <td class="s0r4c2 text ce23"></td>
+                        <td class="s0r4c3 text ce29"></td>
+                    </tr>
+                    <tr class="s0r5 ro2">
+                        <td class="s0r5c0 text ce2"></td>
+                        <td class="s0r5c1 text ce12">
+                            <p>
+                                *The exchange rates will be updated from time to time
+                            </p>
+                        </td>
+                    </tr>
+                    <tr class="s0r6 ro2">
+                        <td class="s0r6c0 text ce4"></td>
+                        <td class="s0r6c1 text ce13"></td>
+                        <td class="s0r6c2 text ce13"></td>
+                        <td class="s0r6c3 text ce30"></td>
+                    </tr>
+                    <tr class="s0r7 ro2">
+                        <td class="s0r7c0 text ce2"></td>
+                        <td class="s0r7c1 text ce14">
+                            <p>
+                                Insert gross amount to upload from paypal
+                            </p>
+                        </td>
+                        <td class="s0r7c2 text ce14"></td>
+                        <td class="s0r7c3 text ce31">
+                            <p>
+                                Your Receive
+                            </p>
+                        </td>
+                    </tr>
+                    <tr class="s0r8 ro2">
+                        <td class="s0r8c0 text ce2"></td>
+                        <td class="s0r8c1 in ce15">
+                            <input id="s0r8c1" name="s0r8c1" data-value="0" data-value-type="float" value="0"
+                                   data-format="0,0.00">
+                        </td>
+                        <td class="s0r8c2 text ce24"></td>
+                        <td class="s0r8c3 out ce32">
+                            <input disabled="disabled" name="s0r8c3" value="-291.3" data-value="-291.3"
+                                   data-value-type="float" data-format="0,0">
+                        </td>
+                    </tr>
+                    <tr class="s0r9 ro2">
+                        <td class="s0r9c0 text ce5">
+                            <p>
+                                6.5%+3
+                            </p>
+                        </td>
+                        <td class="s0r9c1 text ce16"></td>
+                        <td class="s0r9c2 text ce16"></td>
+                        <td class="s0r9c3 text ce33"></td>
+                    </tr>
+                    <tr class="s0r10 ro2">
+                        <td class="s0r10c0 text ce2"></td>
+                        <td class="s0r10c1 text ce14"></td>
+                        <td class="s0r10c2 text ce14"></td>
+                        <td class="s0r10c3 text ce34"></td>
+                    </tr>
+                    <tr class="s0r11 ro2">
+                        <td class="s0r11c0 text ce2"></td>
+                        <td class="s0r11c1 text ce14">
+                            <p>
+                                Insert gross amount to upload from skrill
+                            </p>
+                        </td>
+                        <td class="s0r11c2 text ce14"></td>
+                        <td class="s0r11c3 text ce31">
+                            <p>
+                                Your Receive
+                            </p>
+                        </td>
+                    </tr>
+                    <tr class="s0r12 ro2">
+                        <td class="s0r12c0 text ce2"></td>
+                        <td class="s0r12c1 in ce17">
+                            <input id="s0r12c1" name="s0r12c1" data-value="0" data-value-type="float" value="0"
+                                   data-format="0.00">
+                        </td>
+                        <td class="s0r12c2 text ce24"></td>
+                        <td class="s0r12c3 out ce35">
+                            <input disabled="disabled" name="s0r12c3" value="-291.3" data-value="-291.3"
+                                   data-value-type="float" data-format="0,0">
+                        </td>
+                    </tr>
+                    <tr class="s0r13 ro2">
+                        <td class="s0r13c0 text ce5">
+                            <p>
+                                6.5%+3
+                            </p>
+                        </td>
+                        <td class="s0r13c1 text ce16"></td>
+                        <td class="s0r13c2 text ce16"></td>
+                        <td class="s0r13c3 text ce33"></td>
+                    </tr>
+                    <tr class="s0r14 ro2">
+                        <td class="s0r14c0 text ce2"></td>
+                        <td class="s0r14c1 text ce14"></td>
+                        <td class="s0r14c2 text ce14"></td>
+                        <td class="s0r14c3 text ce34"></td>
+                    </tr>
+                    <tr class="s0r15 ro2">
+                        <td class="s0r15c0 text ce2"></td>
+                        <td class="s0r15c1 text ce14">
+                            <p>
+                                Insert gross amount to upload from Payoneer
+                            </p>
+                        </td>
+                        <td class="s0r15c2 text ce14"></td>
+                        <td class="s0r15c3 text ce31">
+                            <p>
+                                Your Receive
+                            </p>
+                        </td>
+                    </tr>
+                    <tr class="s0r16 ro2">
+                        <td class="s0r16c0 text ce2"></td>
+                        <td class="s0r16c1 in ce15">
+                            <input id="s0r16c1" name="s0r16c1" data-value="0" data-value-type="float" value="0"
+                                   data-format="0,0.00">
+                        </td>
+                        <td class="s0r16c2 text ce14"></td>
+                        <td class="s0r16c3 out ce35">
+                            <input disabled="disabled" name="s0r16c3" value="-291.3" data-value="-291.3"
+                                   data-value-type="float" data-format="0,0">
+                        </td>
+                    </tr>
+                    <tr class="s0r17 ro2">
+                        <td class="s0r17c0 text ce5">
+                            <p>
+                                4%+3
+                            </p>
+                        </td>
+                        <td class="s0r17c1 text ce18"></td>
+                        <td class="s0r17c2 text ce18"></td>
+                        <td class="s0r17c3 text ce36"></td>
+                    </tr>
+                    <tr class="s0r18 ro2">
+                        <td class="s0r18c0 text ce2"></td>
+                        <td class="s0r18c1 text ce19"></td>
+                        <td class="s0r18c2 text ce19"></td>
+                        <td class="s0r18c3 text ce37"></td>
+                    </tr>
+                    <tr class="s0r19 ro2">
+                        <td class="s0r19c0 text ce2"></td>
+                        <td class="s0r19c1 text ce19">
+                            <p>
+                                Desired amount into your online wallet
+                            </p>
+                        </td>
+                        <td class="s0r19c2 text ce25">
+                            <p>
+                                Amount to deposit into
+                            </p>
+                        </td>
+                        <td class="s0r19c3 text ce38">
+                            <p>
+                                Amount to send to
+                            </p>
+                        </td>
+                    </tr>
+                    <tr class="s0r20 ro2">
+                        <td class="s0r20c0 text ce2"></td>
+                        <td class="s0r20c1 text ce19">
+                            <p>
+                                *Amount not inclusive of your receiving fee
+                            </p>
+                        </td>
+                        <td class="s0r20c2 text ce25">
+                            <p>
+                                your ePay Swift account
+                            </p>
+                        </td>
+                        <td class="s0r20c3 text ce38">
+                            <p>
+                                till no. 919150 in KES
+                            </p>
+                        </td>
+                    </tr>
+                    <tr class="s0r21 ro2">
+                        <td class="s0r21c0 text ce2"></td>
+                        <td class="s0r21c1 text ce19"></td>
+                        <td class="s0r21c2 text ce19"></td>
+                        <td class="s0r21c3 text ce38"></td>
+                    </tr>
+                    <tr class="s0r22 ro2">
+                        <td class="s0r22c0 text ce6">
+                            <p>
+                                PesaLink/Equitel TO PayPal/Skrill/Payoneer
+                            </p>
+                        </td>
+                        <td class="s0r22c1 in ce20">
+                            <input id="s0r22c1" name="s0r22c1" data-value="0" data-value-type="float" value="0"
+                                   data-format="0,0.00">
+                        </td>
+                        <td class="s0r22c2 out ce26">
+                            <input disabled="disabled" name="s0r22c2" value="3.09278350515464"
+                                   data-value="3.09278350515464" data-value-type="float" data-format="0,0.00">
+                        </td>
+                        <td class="s0r22c3 out ce39">
+                            <input disabled="disabled" name="s0r22c3" value="321.649484536082"
+                                   data-value="321.649484536082" data-value-type="float" data-format="0,0">
+                        </td>
+                    </tr>
+                    <tr class="s0r23 ro2">
+                        <td class="s0r23c0 text ce5">
+                            <p>
+                                3%+3
+                            </p>
+                        </td>
+                        <td class="s0r23c1 text ce21"></td>
+                        <td class="s0r23c2 text ce21"></td>
+                        <td class="s0r23c3 text ce40"></td>
+                    </tr>
+                    <tr class="s0r24 ro2">
+                        <td class="s0r24c0 text ce7"></td>
+                        <td class="s0r24c1 text ce19"></td>
+                        <td class="s0r24c2 text ce19"></td>
+                        <td class="s0r24c3 text ce37"></td>
+                    </tr>
+                    <tr class="s0r25 ro2">
+                        <td class="s0r25c0 text ce7"></td>
+                        <td class="s0r25c1 text ce19">
+                            <p>
+                                Desired amount into your online wallet
+                            </p>
+                        </td>
+                        <td class="s0r25c2 text ce25">
+                            <p>
+                                Amount to deposit into
+                            </p>
+                        </td>
+                        <td class="s0r25c3 text ce38">
+                            <p>
+                                Amount to send to
+                            </p>
+                        </td>
+                    </tr>
+                    <tr class="s0r26 ro2">
+                        <td class="s0r26c0 text ce7"></td>
+                        <td class="s0r26c1 text ce19">
+                            <p>
+                                *Amount not inclusive of your receiving fee
+                            </p>
+                        </td>
+                        <td class="s0r26c2 text ce25">
+                            <p>
+                                your ePay Swift account
+                            </p>
+                        </td>
+                        <td class="s0r26c3 text ce38">
+                            <p>
+                                till no. 919150 in KES
+                            </p>
+                        </td>
+                    </tr>
+                    <tr class="s0r27 ro2">
+                        <td class="s0r27c0 text ce7"></td>
+                        <td class="s0r27c1 text ce19"></td>
+                        <td class="s0r27c2 text ce19"></td>
+                        <td class="s0r27c3 text ce38"></td>
+                    </tr>
+                    <tr class="s0r28 ro2">
+                        <td class="s0r28c0 text ce6">
+                            <p>
+                                M-pesa TO PayPal/Skrill/Payoneer
+                            </p>
+                        </td>
+                        <td class="s0r28c1 in ce22">
+                            <input id="s0r28c1" name="s0r28c1" data-value="0" data-value-type="float" value="0"
+                                   data-format="0.00">
+                        </td>
+                        <td class="s0r28c2 out ce26">
+                            <input disabled="disabled" name="s0r28c2" value="3.125" data-value="3.125"
+                                   data-value-type="float" data-format="0,0.00">
+                        </td>
+                        <td class="s0r28c3 out ce41">
+                            <input disabled="disabled" name="s0r28c3" value="325" data-value="325"
+                                   data-value-type="float" data-format="0,0">
+                        </td>
+                    </tr>
+                    <tr class="s0r29 ro2">
+                        <td class="s0r29c0 text ce5">
+                            <p>
+                                4%+3
+                            </p>
+                        </td>
+                        <td class="s0r29c1 text ce21"></td>
+                        <td class="s0r29c2 text ce21"></td>
+                        <td class="s0r29c3 text ce42"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" type="text/javascript">
+</script><!-- Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js" type="text/javascript">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.5.3/numeral.min.js" type="text/javascript">
+</script>
+<script src="https://cdn.jsdelivr.net/jstat/1.5.3/jstat.min.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+    jStat.jStat = jStat;
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/formulajs/1.0.8/formula.js" type="text/javascript">
+</script><!-- Spreadsheet calculations -->
+<script type="application/javascript">
+
+    (function ($, Formula) {
+        window.APY = window.APY || {};
+        APY.formulas = {};
+        APY.formulas.s0r8c3 = function () {
+            APY.set('s0r8c3', +(RANGE([0, 8, 1]) - (RANGE([0, 8, 1]) * 0.065) - 3) * RANGE([0, 2, 1]))
+        }
+        APY.formulas.s0r12c3 = function () {
+            APY.set('s0r12c3', +(RANGE([0, 12, 1]) - (RANGE([0, 12, 1]) * 0.065) - 3) * RANGE([0, 2, 1]))
+        }
+        APY.formulas.s0r16c3 = function () {
+            APY.set('s0r16c3', +(RANGE([0, 16, 1]) - (RANGE([0, 16, 1]) * 0.04) - 3) * RANGE([0, 2, 1]))
+        }
+        APY.formulas.s0r22c2 = function () {
+            APY.set('s0r22c2', +((RANGE([0, 22, 1]) + 3) / (0.97)))
+        }
+        APY.formulas.s0r22c3 = function () {
+            APY.set('s0r22c3', +((RANGE([0, 22, 1]) + 3) / (0.97)) * RANGE([0, 4, 1]))
+        }
+        APY.formulas.s0r28c2 = function () {
+            APY.set('s0r28c2', +((RANGE([0, 28, 1]) + 3) / (0.96)))
+        }
+        APY.formulas.s0r28c3 = function () {
+            APY.set('s0r28c3', +((RANGE([0, 28, 1]) + 3) / (0.96)) * RANGE([0, 4, 1]))
+        }
+
+        function step0() {
+            APY.formulas.s0r8c3();
+            APY.formulas.s0r12c3();
+            APY.formulas.s0r16c3();
+            APY.formulas.s0r22c2();
+            APY.formulas.s0r22c3();
+            APY.formulas.s0r28c2();
+            APY.formulas.s0r28c3();
+        }
+
+        function run_calc() {
+            step0()
+        }
+
+        window.onload = function () {
+            $('input, select').on('change', function () {
+                $(this).setFormattedValue();
+                run_calc();
+            });
+
+            $('input:enabled, select').each(function () {
+                $(this).setFormattedValue();
+            });
+            run_calc();
+        };
+
+        $.fn.setFormattedValue = function () {
+            var valueType = $(this).attr('data-value-type');
+            var valueFormat = $(this).attr('data-format');
+
+            var value = APY.getInput($(this).val(), valueType);
+            var formattedValue = APY.formatValue(value, valueType, valueFormat);
+
+            this.attr('data-value', value);
+            this.val(formattedValue);
+        };
+
+        APY.getInput = function (rawInputValue, type) {
+            var returnedValue;
+
+            if (typeof type === 'undefined') type = 'string';
+
+            if (type === 'boolean') {
+                returnedValue = (rawInputValue === 'true');
+            } else if (type === 'float' || type === 'number') {
+                if (rawInputValue.length > 0) {
+                    returnedValue = parseFloat(rawInputValue);
+                } else {
+                    returnedValue = 0;
+                }
+            } else if (type === 'percentage' || type === 'currency') {
+                if (rawInputValue.length > 0) {
+                    returnedValue = numeral().unformat(rawInputValue);
+                } else {
+                    returnedValue = 0;
+                }
+            } else {
+                returnedValue = rawInputValue;
+            }
+
+            return returnedValue;
+        };
+
+        APY.set = function (outputName, value, type) {
+            if (window.APY.cells && window.APY.cells.hasOwnProperty(outputName)) {
+                window.APY.cells[outputName] = value;
+            } else {
+                if (typeof type === 'undefined') {
+                    type = (typeof value === 'undefined') ? 'string' : typeof value;
+                }
+                var element = $('[name=' + outputName + ']');
+                var format = $(element).data('format');
+                var myFormat;
+                element.attr('data-value-type', type);
+                element.attr('data-value', value);
+
+                if ((type === 'number' || type === 'float' || type === 'percentage' || type === 'currency') &&
+                    (typeof format !== "undefined")) {
+
+                    var formatParts = format.toString().split(";", 3);
+                    var formatPartsNumber = formatParts.length;
+                    if (value === 0 && formatPartsNumber === 3) {
+                        myFormat = formatParts[1];
+                    } else if (value < 0) {
+                        myFormat = formatParts[0];
+                    } else {
+                        myFormat = formatParts[formatPartsNumber - 1];
+                    }
+
+                    element.val(numeral(value).format(myFormat));
+
+                } else {
+                    element.val(value);
+                }
+            }
+        };
+
+        APY.formatValue = function (value, type, formats) {
+            var myFormat;
+            var formattedValue = value;
+
+            if ((type === 'number' || type === 'float' || type === 'percentage' || type === 'currency') &&
+                (typeof formats !== 'undefined')) {
+
+                var formatsParts = formats.toString().split(";", 3);
+                var formatPartsNumber = formatsParts.length;
+                if (value === 0 && formatPartsNumber === 3) {
+                    myFormat = formatsParts[1];
+                } else if (value < 0) {
+                    myFormat = formatsParts[0];
+                } else {
+                    myFormat = formatsParts[formatPartsNumber - 1];
+                }
+
+                formattedValue = numeral(value).format(myFormat);
+            }
+
+            return formattedValue;
+        };
+
+        window.RANGE = function () {
+            var item, value;
+            if (arguments.length === 1) {
+                var cell_ref = 's' + arguments[0][0] + 'r' + arguments[0][1] + 'c' + arguments[0][2];
+
+                if (window.APY.cells && window.APY.cells.hasOwnProperty(cell_ref)) {
+                    value = window.APY.cells[cell_ref];
+                } else {
+                    item = $('[name=' + cell_ref + ']');
+                    value = item.length > 0 ? APY.getInput(item.attr('data-value'), item.attr('data-value-type')) : null;
+                }
+
+                return value;
+
+            } else if (arguments.length === 2) {
+                var head = arguments[0];
+                var tail = arguments[1];
+                var values = [];
+
+                for (var i = 0; i <= (tail[1] - head[1]); i++) {
+                    var row = [];
+                    for (var j = 0; j <= tail[2] - head[2]; j++) {
+                        cell_ref = 's' + head[0] + 'r' + (head[1] + i) + 'c' + (head[2] + j);
+
+                        if (window.APY.cells && window.APY.cells.hasOwnProperty(cell_ref)) {
+                            value = window.APY.cells[cell_ref];
+                        } else {
+                            item = $('[name=' + cell_ref + ']');
+                            value = item.length > 0 ? APY.getInput(item.attr('data-value'), item.attr('data-value-type')) : null;
+                        }
+                        row.push(value);
+                    }
+                    values.push(row);
+                }
+                return values;
+            }
+        };
+
+        APY.calculate = run_calc;
+
+    })(jQuery, formulajs);
+</script>
