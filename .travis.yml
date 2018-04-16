@@ -14,6 +14,8 @@ deploy:
   access_key_id: "$DEPLOYER_ACCESS_KEY"
   secret_access_key: "$DEPLOYER_SECRET_KEY"
   bucket: "staging.apps.appizy.com"
+  upload-dir: _site
+  skip_cleanup: true
   on:
     branch: feat/ssl
 
