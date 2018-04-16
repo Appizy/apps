@@ -1,5 +1,9 @@
 language: ruby
 
+env:
+  global:
+  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+
 install:
   - bundle install
 
@@ -10,3 +14,7 @@ deploy:
   access_key_id: "$DEPLOYER_ACCESS_KEY"
   secret_access_key: "$DEPLOYER_SECRET_KEY"
   bucket: "staging.apps.appizy.com"
+  on:
+    branch: *
+
+sudo: false
