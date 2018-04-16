@@ -15,7 +15,6 @@ deploy:
   secret_access_key: "$DEPLOYER_SECRET_KEY"
   bucket: "staging.apps.appizy.com"
   on:
-    branch: *
+    branch: feat/ssl
 
 sudo: false
-
