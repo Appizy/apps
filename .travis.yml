@@ -4,3 +4,9 @@ install:
   - bundle install
 
 script: bundle exec jekyll build
+
+deploy:
+  provider: s3
+  access_key_id: "$DEPLOYER_ACCESS_KEY"
+  secret_access_key: "$DEPLOYER_SECRET_KEY"
+  bucket: "staging.apps.appizy.com"
