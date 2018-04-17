@@ -12,7 +12,7 @@
 title: Apps by Appizy
 email: contact@appizy.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Dynamic spreadsheet application curated by Appizy team. Host easily and
+  Dynamic spreadsheet applications curated by Appizy team. Host easily and
   freely your web calculator created with Appizy.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://apps.appizy.com"

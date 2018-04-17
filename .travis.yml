@@ -17,7 +17,9 @@ deploy:
   local_dir: _site
   region: eu-west-1
   skip_cleanup: true
+  acl: public_read
   on:
-    branch: feat/ssl
+    branch: master
+    tags: true
 
 sudo: false
