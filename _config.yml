@@ -15,7 +15,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Dynamic spreadsheet applications curated by Appizy team. Host easily and
   freely your web calculator created with Appizy.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://apps.appizy.com"
+url: "http://apps.appizy.com"
 twitter_username: appizy
 github_username:  Appizy
 
