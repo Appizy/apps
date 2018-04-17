@@ -2,3 +2,5 @@
 vendor
 _site
 .idea
+Gemfile.lock
+
