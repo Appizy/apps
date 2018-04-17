@@ -1,0 +1,9 @@
+#!/bin/bash
+
+workdir=$( cd "$( dirname "${BASH_SOURCE[0]}" )/../" && pwd )
+
+export JEKYLL_VERSION=3.5
+docker run --rm \
+  --volume="$workdir:/srv/jekyll" \
+  -it jekyll/jekyll:$JEKYLL_VERSION \
+  jekyll $@

@@ -1,4 +1,6 @@
 .bundle
+.sass-cache
 vendor
 _site
 .idea
+Gemfile.lock
