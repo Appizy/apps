@@ -15,6 +15,7 @@ deploy:
   secret_access_key: "$DEPLOYER_SECRET_KEY"
   bucket: "staging.apps.appizy.com"
   upload-dir: _site
+  region: eu-west-1
   skip_cleanup: true
   on:
     branch: feat/ssl
