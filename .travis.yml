@@ -10,16 +10,26 @@ install:
 script: bundle exec jekyll build
 
 deploy:
-  provider: s3
-  access_key_id: "$DEPLOYER_ACCESS_KEY"
-  secret_access_key: "$DEPLOYER_SECRET_KEY"
-  bucket: "staging.apps.appizy.com"
-  local_dir: _site
-  region: eu-west-1
-  skip_cleanup: true
-  acl: public_read
-  on:
-    branch: master
-    tags: true
+  - provider: s3
+    access_key_id: "$DEPLOYER_ACCESS_KEY"
+    secret_access_key: "$DEPLOYER_SECRET_KEY"
+    bucket: "staging.apps.appizy.com"
+    local_dir: _site
+    region: eu-west-1
+    skip_cleanup: true
+    acl: public_read
+    on:
+      branch: master
+  - provider: s3
+    access_key_id: "$DEPLOYER_ACCESS_KEY"
+    secret_access_key: "$DEPLOYER_SECRET_KEY"
+    bucket: "staging.apps.appizy.com"
+    local_dir: _site
+    region: eu-central-1
+    skip_cleanup: true
+    acl: public_read
+    on:
+      branch: master
+      tags: true
 
 sudo: false
